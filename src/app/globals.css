@@ -1,0 +1,8 @@
+/* Minimal global styles.
+   Material UI's <CssBaseline /> handles the main reset, backgrounds,
+   and typography, so we keep this file intentionally small. */
+
+html,
+body {
+  height: 100%;
+}
