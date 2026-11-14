@@ -38,7 +38,7 @@ colors, spacing, button wording, which component to use. Those are design/style 
 
 These decisions are already made (in the Week 2 specs), but their ADRs get written
 when the feature is actually built, so the record matches the code. Number them
-sequentially from 0013 onward as you add them.
+sequentially from the next free number (0015 onward) as you add them.
 
 - **Reminders feature** → send reminders from a dedicated Gmail account; run reminders
   on Supabase Cron every 5 minutes; retry a failed send on the next two runs, then mark it failed.
