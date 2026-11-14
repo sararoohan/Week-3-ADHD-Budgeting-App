@@ -1,6 +1,6 @@
 # Architecture Plan — ADHD Budgeting App (MVP #1)
 
-Source: our Technical Architecture spec — System Architecture Decisions & Database Architecture tabs.
+Source: the Requirements spec → Technical Architecture subpage — System Architecture Decisions (ADRs) & Database Architecture.
 
 A three-tier web app. The *why* behind each big choice lives in docs/adr; this is the plan
 of *what* gets built. Read alongside docs/design-guidelines.md.
@@ -26,14 +26,16 @@ of *what* gets built. Read alongside docs/design-guidelines.md.
 - Home / dashboard (the hub): the one key "safe to spend" number (Epic 2), the single next
   step to take (6.1.1), the most urgent thing first when you return (7.2.1), and progress /
   small wins (6.3.1).
-- Get started: Google sign-in (1.1.1); a short first-run setup — add income (including when
-  it arrives, 1.2.2) and bills — with no required bank link (1.1.2).
+- Get started: Google sign-in (1.1.1); a short first-run setup — enter current money on hand
+  (opening balance), add income (including when it arrives, 1.2.2) and bills — with no required
+  bank link (1.1.2).
 - Safe to spend: the "safe to spend before payday" view, with bills due before payday already
   accounted for (2.1); a "did your pay arrive?" payday confirmation (2.1.3); a quick "will this
   purchase fit?" check (2.2.1).
-- Keep current: add a spending entry in seconds (3.1.2); manage recurring income and bills with
-  no re-entry (3.1.1); see where money went (3.2.2); the budget stays reliable when some
-  spending is missing (3.2.1).
+- Keep current: add a spending entry in seconds (3.1.2); fix a spending entry logged wrong —
+  edit or delete with Undo (3.1.4); record money that comes back as a "money back" entry (3.1.5);
+  manage recurring income and bills with no re-entry (3.1.1); see where money went (3.2.2); the
+  budget stays reliable when some spending is missing (3.2.1).
 - Bills: see every bill and due date in one place (4.1.1); add/edit a bill and choose its
   reminder schedule (4.1.3); see all reminders in one place in the app (4.1.4); mark a bill
   paid; find out early when a bill can't be covered (4.2.2). (Could: add a due date to your own
@@ -45,7 +47,8 @@ of *what* gets built. Read alongside docs/design-guidelines.md.
 - Come back: gentle re-entry after time away — restart from today, not where you left off (7.1.2).
 - Trust: what the app costs and how to leave easily (8.1.1); a privacy notice on how your money
   and ADHD-related data is used (8.1.3); close your account with all data deleted, with
-  "download my data first" (8.1.4).
+  "download my data first" (8.1.4); settings include an optional flexible-spending buffer (a
+  cushion kept out of safe-to-spend).
 
 Note: reminders themselves (email + in-app) are sent by a background job (Supabase Cron + the
 app's Gmail account), not a screen — the Bills "all reminders in one place" view is the in-app side.
