@@ -6,6 +6,30 @@ Project-specific instructions. These add to the global `~/.claude/CLAUDE.md`.
 
 - Tech Fleet class project. Sara is the architect; Claude is the developer.
 - Sara is still learning — explain what you're about to do and why before big actions.
+- This project's CLAUDE.md IS committed to the repo — a deliberate exception to the global
+  "never commit CLAUDE.md" rule — because the instructor reviews it as part of the graded
+  homework. Keep it tracked and up to date; never put secrets or private spec links in it.
+
+## Who writes to this repo (one-writer rule)
+- Claude Code is the ONLY agent that writes to this repo.
+- Cowork (Claude on the specs/Notion side) never edits repo files directly.
+  It drafts content in chat or Notion; Sara applies changes via Claude Code.
+- One writer touches the repo at a time, so two agents never edit the same
+  files at once — this avoids clobbered edits, merge conflicts, and unclear
+  provenance.
+- This applies to multiple Claude Code sessions too: only one active Code
+  session edits the repo at a time. Before editing, check for other live
+  sessions (ListAgents) and run `git status`; if another session is mid-work,
+  wait. Commit to a short-lived session branch often and keep diffs small so a
+  collision costs little. (Git worktrees can enforce this structurally if it
+  becomes a recurring problem.)
+- Spec provenance: each docs/ file's "Source:" line and the docs/README.md
+  map trace every repo doc to its source spec. When the Notion connector is
+  attached (Sara supplies the spec links), Claude Code reads the Notion/Claude
+  specs and maintains these itself; update them whenever a docs/ file changes.
+- Notion is read-only by default for Claude Code: read the specs freely, but
+  never create, edit, move, or delete anything in Notion (specs or otherwise)
+  without Sara's explicit instruction for that specific change.
 
 ## Conventions & guardrails (follow on all work)
 
