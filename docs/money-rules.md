@@ -1,7 +1,7 @@
 # Money / Domain Rules — ADHD Budgeting App
 
-Source: the Requirements spec — Database Architecture (integrity rules, under the Technical
-Architecture subpage) + Task-level Requirements; plus the Research Foundation Report.
+Source: the Technical Architecture spec — Database Architecture (integrity rules); the
+Requirements spec — Task-level Requirements; plus the Research Foundation Report.
 These rules live in the pure money module (ADR-0011) and must be unit-tested with made-up numbers.
 
 ## Core principles
