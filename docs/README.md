@@ -8,23 +8,22 @@ anyone reading the code — can see them. If a spec changes, update the matching
 
 _Maintaining this: when you add or change a file in docs/, update that file's top Source: line and its row in the table below._
 
-**Two specs share the "Technical Architecture" name.** The top-level **Requirements** spec was
-originally titled "Technical Architecture" and was later renamed; it holds Non-functional
-Requirements, Functional Requirements, Technical Requirements, and Task-level Requirements.
-Inside it, a separate **Technical Architecture subpage** holds the six architecture pages: Tool
-Selection, System Architecture Decisions (ADRs), Database Architecture, Security Protocol,
-Development Operations, and Quality Engineering Architecture. In the table below, "Requirements"
-means the spec itself and "Technical Architecture subpage" means that inner page.
+**Two specs sit under the "Requirements" section of the spec hub; the table below cites both by name:**
+- **Requirements** — Non-functional Requirements, Functional Requirements, Technical Requirements,
+  and a Task-level Requirements section (user stories & acceptance criteria, use cases, BDD, flow charts).
+- **Technical Architecture** — the six architecture pages: Tool Selection, System Architecture
+  Decisions (ADRs), Database Architecture, Security Protocol, Development Operations, and Quality
+  Engineering Architecture.
 
 | Repo doc | Distilled from (source of truth) |
 |---|---|
 | design-guidelines.md | Research Foundation Report — Sections 6–9 (ADHD accessibility & design) |
-| architecture.md | Requirements spec → Technical Architecture subpage — System Architecture Decisions (ADRs) & Database Architecture |
-| adr/*.md | Requirements spec → Technical Architecture subpage — System Architecture Decisions (ADRs), Tool Selection; plus Build Plan — Decision Log, and the Vision & Scope and Audience Segmentation Decision Logs |
+| architecture.md | Technical Architecture spec — System Architecture Decisions (ADRs) & Database Architecture |
+| adr/*.md | Technical Architecture spec — System Architecture Decisions (ADRs), Tool Selection; plus Build Plan — Decision Log, and the Vision & Scope and Audience Segmentation Decision Logs |
 | mvp1-scope.md | Release Vision and Scope; Epics, Features and Tasks |
-| money-rules.md | Requirements spec — Database Architecture (integrity rules, under the Technical Architecture subpage) & Task-level Requirements; plus Research Foundation Report |
+| money-rules.md | Technical Architecture spec — Database Architecture (integrity rules); Requirements spec — Task-level Requirements; plus Research Foundation Report |
 | non-functional-requirements.md | Requirements spec — Non-functional Requirements |
 | functional-requirements.md | Requirements spec — Functional Requirements (detailed acceptance + BDD live on the Notion Kanban cards) |
-| definition-of-done.md | Requirements spec — Quality Engineering Architecture (under the Technical Architecture subpage) |
+| definition-of-done.md | Technical Architecture spec — Quality Engineering Architecture |
 
 (Rows for docs not yet created are listed so the mapping is ready when they're added.)

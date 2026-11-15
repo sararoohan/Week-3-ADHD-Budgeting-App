@@ -1,6 +1,6 @@
 # Architecture Plan — ADHD Budgeting App (MVP #1)
 
-Source: the Requirements spec → Technical Architecture subpage — System Architecture Decisions (ADRs) & Database Architecture.
+Source: the Technical Architecture spec — System Architecture Decisions (ADRs) & Database Architecture.
 
 A three-tier web app. The *why* behind each big choice lives in docs/adr; this is the plan
 of *what* gets built. Read alongside docs/design-guidelines.md.
