@@ -56,6 +56,10 @@ sequentially from the next free number (0015 onward) as you add them.
 - **Never erase or rewrite a past decision.** If reality changes it, write a **new** ADR and
   mark the old one **"Superseded by ADR-00NN."** The goal is an honest decision trail.
 - Commit each ADR alongside the code it affects.
+- **The repo is the source of truth for ADRs and their numbers.** The Notion "System
+  Architecture Decisions (ADRs)" page keeps its own separate list with different numbering;
+  where the two disagree, the repo wins. Don't cite Notion ADR numbers in repo docs — reference
+  the repo's `NNNN-*.md` files (e.g. ADR-0009), or call it "a Pending ADR" if it isn't written yet.
 
 ## Template — copy this for each new ADR
 ```
