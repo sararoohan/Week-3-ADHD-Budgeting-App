@@ -55,6 +55,16 @@ Project-specific instructions. These add to the global `~/.claude/CLAUDE.md`.
 - Store money as whole integer cents; never store values the app can calculate (e.g.
   safe-to-spend).
 
+**Testing**
+- Test tools: Vitest (unit tests of the money/domain module), Playwright + axe (end-to-end and
+  accessibility), Lighthouse CI (speed). These self-document through their config and CI; this is
+  only the pointer.
+- Money logic is authored test-first in Phase 0: the money test cases (specified in the Quality
+  Engineering Architecture spec) become the Vitest suite (T-8), which is the source of truth for
+  those cases — not a repo markdown doc.
+- Every pull request runs the automated checks; new or changed money rules need passing unit
+  tests (see docs/definition-of-done.md).
+
 **Docs to read**
 - Read every ADR in docs/adr before changing code; write a new ADR for big choices (check
   docs/adr/README.md → Pending ADRs before building a new area).
