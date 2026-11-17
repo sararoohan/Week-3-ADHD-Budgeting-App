@@ -7,7 +7,7 @@ These rules live in the pure money module (ADR-0011) and must be unit-tested wit
 ## Core principles
 - Money is stored as whole integer cents (ADR-0009); converted to dollars only for display;
   amounts must be above zero.
-- Spending, income, deposits, and "money back" amounts are all stored as positive values; a "money back"
+- Spending, deposits (all money in), and "money back" amounts are all stored as positive values; a "money back"
   entry (see below) is a distinct type that offsets spending, not a negative number.
 - Never store what can be calculated — safe-to-spend, bills due before payday, money set
   aside — all computed each time from stored data (ADR-0010).
@@ -18,23 +18,23 @@ These rules live in the pure money module (ADR-0011) and must be unit-tested wit
 - Paydays and due dates are stored as calendar dates; timestamps (created, sent) in UTC; the
   user's time zone in their profile.
 - Schedules cover one-time and repeating items at weekly, biweekly, semi-monthly, and monthly
-  frequencies. Repeating income and bills are stored once with a schedule; future dates are
+  frequencies. Repeating deposits (scheduled money in) and bills are stored once with a schedule; future dates are
   calculated, not copied ahead.
 - Changing a schedule changes only *future* calculated dates. Already-recorded facts (paid
-  bills, arrived pay) are historical and are never rewritten.
+  bills, arrived money in) are historical and are never rewritten.
 - A monthly day a month doesn't have (29th–31st) falls on that month's last day, and the saved
   day stays the same (a bill set for the 31st is due Feb 28, Mar 31, Apr 30).
-- "The next payday" is the next upcoming date from the user's recurring income schedule; only a
-  scheduled income drives this window (for "bills due before the next payday"). Unscheduled money-in
-  — a one-off income or a deposit (ADR-0020) — simply raises "available now" and sets no payday.
-  MVP #1 supports one recurring income schedule plus unlimited ad-hoc money-in entries; multiple
-  recurring schedules are MMP.
+- "The next payday" is the next upcoming date from the user's recurring deposit schedule; only a
+  scheduled deposit drives this window (for "bills due before the next payday"). A one-off deposit
+  (ADR-0020) simply raises "available now" and sets no payday. There is no income/deposit type — the
+  distinction is scheduled vs one-off, and a scheduled recurring deposit is what "income" means to the user.
+  MVP #1 supports one recurring schedule plus unlimited one-off deposits; multiple recurring schedules are MMP.
 
-## Money in: arrived pay, and deposits
-- Plan only from money that has actually arrived (2.1.3). On payday, ask "Did your pay arrive?"
-  with the amount pre-filled, rather than counting scheduled pay automatically.
-- A deposit or a one-off income (ADR-0020) is logged when it arrives and counts toward "available
-  now" immediately — there is no "did it arrive?" step, since it isn't an expected, scheduled amount.
+## Money in (deposits, scheduled or one-off)
+- Plan only from money that has actually arrived (2.1.3). A scheduled deposit is *expected*: on its
+  date, ask "Did it arrive?" with the amount pre-filled, rather than counting it automatically.
+- A one-off deposit (ADR-0020) is logged when it arrives and counts toward "available now"
+  immediately — there is no "did it arrive?" step, since it isn't an expected, scheduled amount.
 
 ## Refunds / money back
 - A "money back" entry records money returned to the user (a refund or return). A reimbursement that is simply new money coming in is a *deposit*, not money-back (ADR-0020).
@@ -45,15 +45,14 @@ These rules live in the pure money module (ADR-0011) and must be unit-tested wit
   spending, so it raises "available now."
 - It can optionally be linked to the purchase/category it refunds, so "where money went" stays
   accurate; if unlinked, it still offsets overall spending.
-- It is not treated as pay/income, so it does not affect payday logic or the "did your pay
-  arrive?" flow.
+- It is not money in (not a deposit), so it does not affect payday logic or the "did it arrive?" flow.
 
 ## Safe-to-spend  (confirmed — see ADR-0013, refined by ADR-0020)
 Intent: how much the user can safely spend before their next payday, with upcoming bills
 already set aside.
 
     available now = opening balance (captured at first-run setup)
-                  + money-in that has arrived (income and deposits)
+                  + money in that has arrived (scheduled and one-off deposits)
                   − net spending (purchases and paid bills, minus any "money back")
 
     safe-to-spend = available now
@@ -82,9 +81,9 @@ a fixed default for MVP #1; the per-bill reminder schedule is user-configurable 
   infrastructure (ADR-0015, built with T-5).
 
 ## Everyday rules
-- One home per fact: whether a bill is paid lives only in bill_payments; whether pay arrived
-  only in income_arrivals.
-- Spending entries, income, deposits and bills can each be edited or removed (ADR-0019): an edit
+- One home per fact: whether a bill is paid lives only in bill_payments; whether a scheduled
+  deposit arrived lives only in deposits.
+- Spending entries, deposits (money in) and bills can each be edited or removed (ADR-0019): an edit
   overwrites in place; a delete is a hard delete with an immediate in-memory Undo; deleting a
   purchase also removes any linked refunds (Undo restores them together); a recurring entry first
   asks "just this one, or all future?" (FR-9). Fixing a mistake must be quick and low-effort — never a chore.

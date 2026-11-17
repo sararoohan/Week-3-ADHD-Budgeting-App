@@ -4,11 +4,11 @@ Source: the Requirements spec — Functional Requirements. The detailed acceptan
 criteria and BDD scenarios are **not** here — they live on the Notion Kanban cards (one
 card per FR) and are fed to the build per feature. This file is the index.
 
-MVP #1 has 41 functional requirements across FR-1 to FR-39, numbered in **epic order** so a
+MVP #1 has 40 functional requirements across FR-1 to FR-38, numbered in **epic order** so a
 number never changes when the build order does (build order comes from the Build Plan and
 each card's Phase). FR-15 and FR-32 are each split into a/b cards so each builds in one
 sitting; FR-8 and FR-11 each cover two source tasks (one screen/setting delivers both, so
-they're built and tested together). FR-33–FR-39 were added after the initial list and numbered
+they're built and tested together). FR-33–FR-38 were added after the initial list and numbered
 last (not in epic order) so existing FR numbers stay stable.
 
 | ID | Requirement | Source task |
@@ -16,7 +16,7 @@ last (not in epic order) so existing FR numbers stay stable.
 | FR-1 | Create an account and sign in with Google, no password to remember | 1.1.1 |
 | FR-2 | Start budgeting without linking a bank | 1.1.2 |
 | FR-3 | Get a working budget in one short first session | 1.2.1 |
-| FR-4 | Record what they're paid and when | 1.2.2 |
+| FR-4 | Record money coming in — optionally on a recurring schedule | 1.2.2 |
 | FR-5 | See one amount that's safe to spend until the next payday | 2.1.1 |
 | FR-6 | See which bills are already counted in that amount | 2.1.2 |
 | FR-7 | Plan only from money that has arrived | 2.1.3 |
@@ -53,4 +53,3 @@ last (not in epic order) so existing FR numbers stay stable.
 | FR-36 | Record money that comes back — a refund *(see ADR-0014)* | 3.1.5 |
 | FR-37 | Enter an opening balance at setup *(Must; see ADR-0013)* | 1.2.3 |
 | FR-38 | Set an optional flexible-spending buffer *(Should)* | 5.2.1 |
-| FR-39 | Record money coming in that isn't scheduled pay — a deposit *(Must; see ADR-0020)* | 3.1.6 *(new)* |

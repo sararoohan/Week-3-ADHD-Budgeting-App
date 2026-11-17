@@ -18,7 +18,7 @@ without shame.
    payday already accounted for; plan from money that has actually arrived.
 3. Keep spending current with little effort — add a purchase in seconds; edit or delete a
    purchase (with Undo); record money that comes back (refund/return) with a simple "money back"
-   entry, no editing the original; record money in that isn't scheduled pay — a deposit (ADR-0020);
+   entry, no editing the original; record any money in (a deposit), scheduled or one-off (ADR-0020);
    no re-entry of recurring items; reliable even when data is incomplete.
 4. Stay ahead of every bill — see every bill & due date; reminders on a schedule you choose
    (email + in-app); money set aside; early warning when a bill can't be covered.
@@ -33,7 +33,7 @@ without shame.
 
 ## Explicitly OUT of MVP #1 (later / MMP)
 - Linking a bank account / automatic transaction import (manual entry only in MVP #1).
-- Multiple recurring income schedules (MVP #1 = one recurring schedule + unlimited ad-hoc money-in entries — one-off income and deposits, ADR-0020).
+- Multiple recurring income schedules (MVP #1 = one recurring schedule + unlimited one-off deposits — money in that isn't on the recurring schedule, ADR-0020).
 - Debt payoff and credit tools; overdraft handling.
 - Impulse help at the moment of checkout / on credit (MVP #1's pause lives inside the app only).
 - Saving / savings goals (moved to MMP).
