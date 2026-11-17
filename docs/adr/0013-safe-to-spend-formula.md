@@ -1,7 +1,7 @@
 # ADR-0013: Safe-to-spend formula
 
 ## Date and status
-2026-11-13. Accepted. Refined by ADR-0020 — the "arrived pay" term generalizes to "arrived money-in" (income + deposits). The formula itself is unchanged.
+2026-11-13. Accepted. Refined by ADR-0020 — the "arrived pay" term generalizes to "money in that has arrived" (all money in, scheduled or one-off). The formula itself is unchanged.
 
 ## Context
 "Safe to spend" is the single most important number in the app (Epic 2) — the one figure on the home screen, and the basis for the "will this purchase fit?" check and the shortfall warning. The Week-2 specs describe the *intent* but never pin the exact arithmetic, and there is no bank link (ADR-0004 scope), so the app only knows about money the user tells it about. The formula must be defined precisely: it lives in the pure money module and has to be unit-testable, and getting it wrong erodes the trust the whole app depends on.
