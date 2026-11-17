@@ -26,47 +26,42 @@ Write an ADR when the decision is:
 colors, spacing, button wording, which component to use. Those are design/style and live in
 `docs/design-guidelines.md` or the theme, not here.
 
-### Examples for this project
-- **ADR-worthy:** Next.js + Material UI, Vercel, Supabase, TypeScript, Google sign-in,
-  storing money as whole cents, calculating (not storing) safe-to-spend, the three-layer
-  structure, Row Level Security, secrets in environment variables, disabling Next.js 16's
-  `cacheComponents` default.
-- **Not ADRs** (→ design guidelines / theme): the Inter font, the palette colors, spacing,
-  copy wording.
+## When to write an ADR (timing & status)
+Write the ADR **when the decision is made**, as **Accepted** — don't defer it to build time. The
+reasoning is freshest at the moment of the decision, and an undocumented decision is the easiest
+one to forget or quietly contradict later.
 
-## Pending ADRs (write these as we build the related part)
+- **Accepted** — a decision that's been made. The normal state; nearly every ADR here is Accepted.
+- **Proposed** — a decision that's been *surfaced but not yet made* (for example, a question raised
+  mid-build that needs deliberation). Record it as a Proposed ADR so it's visible, then move it to
+  **Accepted** once decided, or **Rejected** if declined.
+- **Superseded** — a decision later *reversed or materially changed*: write a **new** ADR that
+  supersedes the old one and mark the old one **"Superseded by ADR-00NN."** Supersede only for real
+  reversals — a typo or a clarification that doesn't change the decision is just an edit in place,
+  so the trail doesn't fill with noise.
 
-These decisions are already made (in the Week 2 specs), but their ADRs get written
-when the feature is actually built, so the record matches the code. Number them
-sequentially from the next free number (0015 onward) as you add them.
-
-- **Reminders feature** → send reminders from a dedicated Gmail account; run reminders
-  on Supabase Cron every 5 minutes; retry a failed send on the next two runs, then mark it failed.
-- **CI / DevOps** → GitHub Actions checks on every pull request + protected main + Dependabot;
-  no keep-alive job (watch the Supabase pause-warning email and restore if paused).
-- **Testing** → Vitest + Playwright (with axe) + Lighthouse CI.
-- **Monitoring** → own error table (30-day retention) + Vercel Speed Insights + KPIs from own data.
-- **Content** → app wording and legal text kept in the repo.
-- **Made-up test data** → short ADR, or keep as a CLAUDE.md rule.
+There is no "decided-but-unwritten" backlog: a made decision gets its ADR now. A genuinely build-time
+decision (one that can't be made until the code exists, like ADR-0005) is written the moment it's
+made during the build — that is still "at the time of decision," not deferral.
 
 ## Conventions
 - **Filename:** `NNNN-short-title.md` (e.g. `0001-record-decisions-as-adrs.md`).
 - **Number sequentially**; never reuse a number.
-- **Status:** Proposed → Accepted → (if it later changes) Superseded.
+- **Status:** one of Proposed, Accepted, Superseded, or Rejected (see *When to write an ADR* above for when each applies).
 - **Never erase or rewrite a past decision.** If reality changes it, write a **new** ADR and
   mark the old one **"Superseded by ADR-00NN."** The goal is an honest decision trail.
 - Commit each ADR alongside the code it affects.
 - **The repo is the source of truth for ADRs and their numbers.** The Notion "System
-  Architecture Decisions (ADRs)" page keeps its own separate list with different numbering;
-  where the two disagree, the repo wins. Don't cite Notion ADR numbers in repo docs — reference
-  the repo's `NNNN-*.md` files (e.g. ADR-0009), or call it "a Pending ADR" if it isn't written yet.
+  Architecture Decisions (ADRs)" page mirrors the repo — same numbers, titles, and order — and is
+  kept in sync whenever the repo changes. Where the two ever disagree, the repo wins. Cite ADRs by
+  their repo number (e.g. ADR-0009).
 
 ## Template — copy this for each new ADR
 ```
 # ADR-0000: [The decision, in a few words]
 
 ## Date and status
-[Date]. [Proposed, Accepted, or Replaced by ADR-0000]
+[Date]. [Accepted — or Proposed if the decision is still open; Superseded by ADR-00NN if later reversed]
 
 ## Context
 What is happening? What problem pushed you to make a choice?

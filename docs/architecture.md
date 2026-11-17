@@ -34,7 +34,7 @@ of *what* gets built. Read alongside docs/design-guidelines.md.
   purchase fit?" check (2.2.1).
 - Keep current: add a spending entry in seconds (3.1.2); fix a spending entry logged wrong —
   edit or delete with Undo (3.1.4); record money that comes back as a "money back" entry (3.1.5);
-  manage recurring income and bills with no re-entry (3.1.1); see where money went (3.2.2); the
+  record money in that isn't scheduled pay — a deposit (ADR-0020); manage recurring income and bills with no re-entry (3.1.1); see where money went (3.2.2); the
   budget stays reliable when some spending is missing (3.2.1).
 - Bills: see every bill and due date in one place (4.1.1); add/edit a bill and choose its
   reminder schedule (4.1.3); see all reminders in one place in the app (4.1.4); mark a bill

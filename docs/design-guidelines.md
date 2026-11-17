@@ -44,6 +44,9 @@ attention, working memory, executive function. We remove barriers; we never labe
 - **Light / dark mode:** **Light mode only for MVP #1.** Dark mode (or following the device's setting) is a **nice-to-have for a later release** — it needs a second, fully contrast-checked palette.
 - **Spacing:** generous white space; large touch targets.
 
+## Entry forms
+- **Date defaults to today, always editable.** When logging an entry (a purchase, money in, a bill payment), the date field pre-fills to today so the common case needs no input; the user changes it only when logging something from another day. This cuts manual entry (principles 2 and 4) without ever assuming the date.
+
 ## Honesty note
 No published study has tested a budgeting app built for adults with ADHD. Treat these as
 evidence-informed starting points and validate with real users (co-design) when possible.
