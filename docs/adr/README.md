@@ -26,14 +26,6 @@ Write an ADR when the decision is:
 colors, spacing, button wording, which component to use. Those are design/style and live in
 `docs/design-guidelines.md` or the theme, not here.
 
-### Examples for this project
-- **ADR-worthy:** Next.js + Material UI, Vercel, Supabase, TypeScript, Google sign-in,
-  storing money as whole cents, calculating (not storing) safe-to-spend, the three-layer
-  structure, Row Level Security, secrets in environment variables, disabling Next.js 16's
-  `cacheComponents` default.
-- **Not ADRs** (→ design guidelines / theme): the Inter font, the palette colors, spacing,
-  copy wording.
-
 ## When to write an ADR (timing & status)
 Write the ADR **when the decision is made**, as **Accepted** — don't defer it to build time. The
 reasoning is freshest at the moment of the decision, and an undocumented decision is the easiest
