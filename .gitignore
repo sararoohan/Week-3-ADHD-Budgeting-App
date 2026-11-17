@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# local-only session carry-forward log (not a committed deliverable)
+open-items.md
+
 # debug
 npm-debug.log*
 yarn-debug.log*
