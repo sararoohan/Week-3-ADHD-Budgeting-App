@@ -1,7 +1,7 @@
 # ADR-0014: Record refunds as "money back" entries, not negative spending
 
 ## Date and status
-2026-11-14. Accepted
+2026-11-14. Accepted. Refined by ADR-0020 — a reimbursement that is new money in is a "deposit," not money-back; money-back here is a refund or return that offsets a purchase. The decision itself is unchanged.
 
 ## Context
 Users sometimes get money back — a refund, a return, a reimbursement. MVP #1 lets users record that (FR-36), and the returned money must be reflected in safe-to-spend. We need a representation that keeps the math exact (ADR-0009: amounts stored as whole positive cents) and keeps the ADHD experience low-effort (no hunting down and editing the original purchase).
