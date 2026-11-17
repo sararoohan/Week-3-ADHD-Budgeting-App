@@ -27,9 +27,12 @@ Project-specific instructions. These add to the global `~/.claude/CLAUDE.md`.
   map trace every repo doc to its source spec. When the Notion connector is
   attached (Sara supplies the spec links), Claude Code reads the Notion/Claude
   specs and maintains these itself; update them whenever a docs/ file changes.
-- Notion is read-only by default for Claude Code: read the specs freely, but
-  never create, edit, move, or delete anything in Notion (specs or otherwise)
-  without Sara's explicit instruction for that specific change.
+- Source of truth: Notion is the source of truth for docs/specs; the repo (git)
+  is the source of truth for code and the condensed docs/ files. Read the Notion
+  specs freely and treat them as current. Keep code in the repo, never in Notion.
+- Claude Code may write/update docs in Notion when Sara asks for a specific
+  change — but never create, edit, move, or delete anything in Notion (specs or
+  otherwise) without Sara's explicit instruction for that specific change.
 
 ## Conventions & guardrails (follow on all work)
 
