@@ -87,3 +87,40 @@ What happens because of this choice? What gets easier? What gets harder? What's 
 The operational rule for the developer agent lives in the repo's `CLAUDE.md`
 ("read every ADR before changing code; write a new ADR for big choices"). This README
 explains the practice; `CLAUDE.md` is what makes Claude Code act on it.
+
+## Historical numbering crosswalk (old ADR numbers → repo numbers)
+Before the specs were synced to this repo (Nov 2026), the ADRs used a **different
+numbering**. Some older documents may still cite those old numbers.
+
+> **Resolve every ADR citation by its subject, not its number.** Read what decision the
+> surrounding text is about and match it to the repo ADR below — an old number rarely
+> lines up with the repo one, so trusting the printed number is how stale citations
+> spread. This crosswalk is the shortcut; the repo ADR files are the source of truth.
+
+| Old # | Old decision | Repo # |
+|-------|--------------|--------|
+| 0001 | Record ADRs in docs/adr | 0001 |
+| 0002 | Three tiers: Next.js + MUI on Vercel, Supabase | 0002 + 0003 + 0004 *(split into three)* |
+| 0003 | TypeScript for all code | 0007 |
+| 0004 | Sign-in by email link/code *(superseded)* | 0008 *(auth lineage)* |
+| 0005 | Google sign-in, optional passkey | 0008 |
+| 0006 | Reminders by email + app, Resend *(superseded)* | 0015 *(reminder lineage)* |
+| 0007 | Reminder emails from a dedicated Gmail account, port 465 | 0015 |
+| 0008 | Supabase Cron every 5 minutes runs the reminder job | 0015 |
+| 0009 | GitHub keep-alive job *(superseded)* | — *(no repo ADR; folded into 0004 Use Supabase)* |
+| 0010 | No keep-alive; watch the pause-warning email | — *(no repo ADR; folded into 0004 Use Supabase)* |
+| 0011 | GitHub Actions checks, protected main, Dependabot | 0016 |
+| 0012 | Vitest, Playwright + axe, Lighthouse CI | 0017 |
+| 0013 | Own error table, Speed Insights, KPIs | 0018 |
+| 0014 | Wording and legal text kept in the repo | **0021** *(recorded as an ADR 2026-11-17)* |
+| 0015 | Testers use made-up numbers | — *(a CLAUDE.md guardrail, not an ADR)* |
+| 0016 | Row Level Security on every table + on-delete-cascade | 0012 *(cascade now lives in 0019)* |
+| 0017 | Amounts stored as whole cents | 0009 |
+| 0018 | Safe-to-spend calculated, never stored | 0010 |
+| 0019 | Money rules in one pure module; three layers | 0011 |
+| 0020 | Reminder retries (twice, then recorded as failed) | 0015 |
+
+Repo ADRs **added or refined after the sync** have no old-numbering source, so don't
+expect a reverse match: 0005 (disable Next.js cache components), 0006 (secrets in env
+vars), 0013 (safe-to-spend formula), 0014 (record refunds as money-back), 0019 (edit /
+delete / undo), 0020 (money in).
