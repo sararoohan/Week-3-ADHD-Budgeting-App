@@ -25,5 +25,7 @@ _Maintaining this: when you add or change a file in docs/, update that file's to
 | non-functional-requirements.md | Requirements spec — Non-functional Requirements |
 | functional-requirements.md | Requirements spec — Functional Requirements (detailed acceptance + BDD live on the Notion Kanban cards) |
 | definition-of-done.md | Technical Architecture spec — Quality Engineering Architecture |
+| database-design.md | Week 4 Database Design Template, filled from the Technical Architecture spec — Database Architecture + the ADRs |
+| database-diagram.md | Mermaid ER diagram of the schema in database-design.md (derived from the Database Architecture spec) |
 
 (Rows for docs not yet created are listed so the mapping is ready when they're added.)
