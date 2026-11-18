@@ -69,8 +69,8 @@ Project-specific instructions. These add to the global `~/.claude/CLAUDE.md`.
   tests (see docs/definition-of-done.md).
 
 **Docs to read**
-- Read every ADR in docs/adr before changing code; write a new ADR for big choices (check
-  docs/adr/README.md → Pending ADRs before building a new area).
+- Read every ADR in docs/adr before changing code; write a new ADR for big choices (write it
+  when the decision is made — see docs/adr/README.md, "When to write an ADR").
 - Read docs/design-guidelines.md before building or changing any screen.
 - Read docs/architecture.md for the overall system plan (the *what* that gets built).
 

@@ -47,8 +47,7 @@ without shame.
 - No bank link; free for now.
 - Money stored as whole cents (ADR-0009); safe-to-spend calculated, never stored (ADR-0010).
 - Row Level Security so each user sees only their own data (ADR-0012).
-- Reminders by email + in-app; the sending infrastructure is a Pending ADR (built with T-5;
-  see docs/adr/README.md).
+- Reminders by email + in-app; delivery is ADR-0015 (built with T-5).
 - Testers use made-up data only (see CLAUDE.md guardrails).
 
 ## How to build against this
