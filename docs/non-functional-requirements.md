@@ -43,7 +43,7 @@ email and in the app's reminder list. Each names the bill and its due date, neve
 balances. A failed send is retried on the next two runs, then recorded as failed. Users
 can pause, change or stop reminders in one step.
 - Checked by: a test reminder email arrives (Phase 0 gate); failed sends show in the error records.
-- Related: Reminders is a Pending ADR — write it when T-5 is built (docs/adr/README.md). Source task: T-5.
+- Related: ADR-0015 (reminder delivery). Source task: T-5.
 
 ### NFR-5 — Speed  (Performance Efficiency)
 Core Web Vitals "good" at the 75th percentile on phones and desktop (largest content
