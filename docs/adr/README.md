@@ -123,4 +123,5 @@ numbering**. Some older documents may still cite those old numbers.
 Repo ADRs **added or refined after the sync** have no old-numbering source, so don't
 expect a reverse match: 0005 (disable Next.js cache components), 0006 (secrets in env
 vars), 0013 (safe-to-spend formula), 0014 (record refunds as money-back), 0019 (edit /
-delete / undo), 0020 (money in), 0022 (database schema & migrations).
+delete / undo), 0020 (money in), 0022 (database schema & migrations), 0023 (grant table
+privileges to app roles).
