@@ -288,6 +288,13 @@ The service-role key (which bypasses RLS) is used only in server code — the re
 deletion, and error-record writes — and that code still filters by the signed-in user where
 relevant (ADR-0012). See the Keep Your App Safe Checklist for the key-handling rules.
 
+**Table grants — the layer beneath RLS (ADR-0023).** Postgres checks access in two layers: a
+table-level **GRANT** decides whether a *role* may touch a table at all, and only then does RLS
+decide *which rows*. RLS alone is not enough — a role with no grant is denied before any policy runs.
+The `authenticated` and `service_role` roles are granted `SELECT / INSERT / UPDATE / DELETE` on every
+table (in `<timestamp>_grant_table_privileges.sql`); `anon` is deliberately **not** granted, since the
+app has no anonymous data access. RLS then restricts `authenticated` to its own rows as above.
+
 ---
 
 ## Database diagram
@@ -304,4 +311,5 @@ Submission Template.
       (ADR-0022: Supabase CLI migrations — versioned and rebuildable).
 - [ ] **Each migration's name says what it does** — e.g. the first is
       `<timestamp>_initial_schema.sql` (create all 10 tables, constraints, RLS policies, and
-      `user_id` indexes).
+      `user_id` indexes), followed by `<timestamp>_grant_table_privileges.sql` (grant table DML to
+      the `authenticated` and `service_role` roles — the GRANT layer beneath RLS, ADR-0023).
