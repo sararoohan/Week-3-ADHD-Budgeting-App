@@ -3,12 +3,12 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-// Roboto font (Material UI's default typeface), loaded from the
-// self-hosted @fontsource/roboto package in the weights we use.
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
+// Inter font, loaded from the self-hosted @fontsource/inter package
+// in the weights we use.
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/700.css";
 
 import theme from "@/theme";
 import "./globals.css";
