@@ -26,7 +26,14 @@ export default function Home() {
             A calmer, ADHD-friendly way to see your money and stay on top of it —
             without the overwhelm.
           </Typography>
-          <Button variant="contained" size="large" disableElevation>
+          {/* A plain href makes the Button a real link to the login page.
+              (href is just a string, so it works from a server component.) */}
+          <Button
+            href="/login"
+            variant="contained"
+            size="large"
+            disableElevation
+          >
             Get started
           </Button>
           <Typography variant="body2" color="text.secondary">
