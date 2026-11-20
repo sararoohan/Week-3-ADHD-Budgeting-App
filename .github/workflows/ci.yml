@@ -1,0 +1,57 @@
+# CI — the automated checks that run on every pull request.
+#
+# Plain-language version: whenever you open or update a pull request, GitHub spins
+# up a fresh Linux machine, installs the project, and runs our checks. If any check
+# fails, the PR shows a red X and (once branch protection is on) can't be merged.
+# This is the "robot reviewer" that catches mistakes before they reach staging/main.
+
+name: CI
+
+# When to run: on every pull request, and on direct pushes to the long-lived
+# branches (so their status badge stays current after a merge).
+on:
+  pull_request:
+  push:
+    branches: [staging, main]
+
+# If you push again to the same PR/branch, cancel the older in-progress run —
+# no point finishing checks on code you've already replaced.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Lint, test, build
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Grab the code from the branch under test.
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      # 2. Install Node 22 (matches local + the Vercel runtime) and cache npm
+      #    downloads so later runs are faster.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      # 3. Install exactly what package-lock.json pins (reproducible, no surprises).
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Lint — catch style/quality problems.
+      - name: Lint
+        run: npm run lint
+
+      # 5. Unit tests — the money/domain suite (currently the placeholder; the real
+      #    test-first money suite lands in Phase 1, ticket T-8).
+      - name: Unit tests
+        run: npm run test
+
+      # 6. Build — this is also our TYPE GATE: `next build` fails on any TypeScript
+      #    error, and it generates next-env.d.ts itself (which a bare tsc can't rely
+      #    on in CI). A green build means it type-checks and compiles.
+      - name: Build
+        run: npm run build
