@@ -124,4 +124,4 @@ Repo ADRs **added or refined after the sync** have no old-numbering source, so d
 expect a reverse match: 0005 (disable Next.js cache components), 0006 (secrets in env
 vars), 0013 (safe-to-spend formula), 0014 (record refunds as money-back), 0019 (edit /
 delete / undo), 0020 (money in), 0022 (database schema & migrations), 0023 (grant table
-privileges to app roles), 0024 (phased quality gates).
+privileges to app roles), 0024 (phased quality gates), 0025 (create profile on sign-up).
