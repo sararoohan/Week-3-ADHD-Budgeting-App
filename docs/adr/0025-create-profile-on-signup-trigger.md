@@ -33,15 +33,27 @@ We need to decide **who creates the profiles row, and when** — a decision that
 ## Decision
 1. Add a migration with a `SECURITY DEFINER` function `public.handle_new_user()` and an
    `AFTER INSERT` trigger `on_auth_user_created` on `auth.users` that inserts a `public.profiles`
-   row for the new user.
+   row for the new user. The same migration also **backfills** a profile for any pre-existing auth
+   users (the trigger fires only on new inserts), so the invariant holds for existing accounts too.
 2. **Keep the trigger minimal:** insert `id` only. Every other `profiles` column has a default
-   (`time_zone` defaults to `'UTC'`). `ON CONFLICT (id) DO NOTHING` makes it idempotent so it can
-   **never block a sign-up**.
+   (`time_zone` defaults to `'UTC'`). `ON CONFLICT (id) DO NOTHING` makes it idempotent against a
+   duplicate id. This is a **narrow** guarantee, not an absolute one: the id-only insert won't fail
+   under the current schema, so it won't abort a sign-up — but a future migration that adds a NOT
+   NULL column to `profiles` without a default (or a similar constraint the id-only insert can't
+   satisfy) would make the trigger raise and abort the sign-up transaction, and must update this
+   trigger. We deliberately do **not** wrap the body in a catch-all exception handler: swallowing
+   every error would let a user sign up with **no** profile — the exact silent broken state this
+   trigger exists to prevent. Failing loudly is preferable here.
 3. `SECURITY DEFINER` + `set search_path = ''` (fully schema-qualified) so the insert runs as the
    function owner — which bypasses RLS — satisfying the owner-only insert policy on `profiles`
    without an `auth.uid()` context during sign-up. This mirrors the hardening already used in
    `set_updated_at` (ADR-0022).
-4. **The app owns the editable fields, not the trigger:** the app updates `time_zone` once it can
+4. **Grants for the auth admin role:** GoTrue inserts into `auth.users` as `supabase_auth_admin`,
+   so the migration grants that role `USAGE` on schema `public` and `EXECUTE` on
+   `handle_new_user()`, and revokes `EXECUTE` from `PUBLIC`. Without the schema/execute access the
+   sign-up transaction would abort ("Database error saving new user") — the same GRANT-layer lesson
+   as ADR-0023, applied pre-emptively so sign-up can't silently break on a hardened project.
+5. **The app owns the editable fields, not the trigger:** the app updates `time_zone` once it can
    detect the user's zone, and reads the display name / avatar from the Google auth metadata
    (`user.user_metadata`) rather than duplicating them here. This keeps the trigger a pure
    existence-guarantee and avoids baking profile *content* into the database layer.
