@@ -1,0 +1,43 @@
+# Dependabot configuration.
+#
+# Keeps dependencies current via scheduled VERSION-update PRs. These, plus
+# Dependabot's separate SECURITY-update PRs, both land on the repo's default
+# branch (now `staging`), so every dependency change flows through our normal
+# pipeline (CI: lint/test/build + branch protection + review) before it is
+# promoted to `main`. See ADR-0016 (CI/DevOps) and ADR-0026 (default branch).
+#
+# Note: security updates ALWAYS target the default branch and cannot be
+# redirected by config, so we intentionally do NOT set `target-branch` here —
+# `staging` being the default branch is what routes everything correctly.
+
+version: 2
+updates:
+  # JavaScript / npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(dev-deps)"
+    groups:
+      # Batch all safe minor + patch bumps into one PR to cut review noise.
+      # Major bumps fall out of the group and get individual PRs (they can break).
+      npm-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions used in our CI workflows (.github/workflows)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci(deps)"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
